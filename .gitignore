@@ -7,4 +7,4 @@ packages/
 *.pfx
 *.ico
 *.lic
-
+*.TMP
