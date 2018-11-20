@@ -835,8 +835,6 @@ namespace GraphView
             });
         }
 
-        private double step = 0.5;
-
         private void ClearMesh_Click(object sender, RoutedEventArgs e)
         {
             eyeshot.Layers[m_LayerList[m_MeshLayer]].Visible = false;
