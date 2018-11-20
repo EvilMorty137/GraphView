@@ -396,6 +396,7 @@ namespace GraphView
         }
 
         WindingNumberRPD_Tree _wnTree;
+       // CMesh _cmesh;
 
         private double BaseIO(Point3D p)
         {
@@ -825,6 +826,10 @@ namespace GraphView
                     m_PointList.AddRange(pointList);
 
                     ShowPoints(m_PointList, RandomColor(),true);
+                    //CheckInterference();
+                    //eyeshot.SetView(viewType.Top);
+                    //eyeshot.ZoomFit();
+                    //eyeshot.Invalidate();
                 }
                 ImportPoints.IsEnabled = true;
             });
