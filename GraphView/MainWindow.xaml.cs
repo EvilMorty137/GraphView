@@ -33,7 +33,6 @@ namespace GraphView
         private List<Point3D> m_PointList;
         private Random m_Random = new Random();
         private Vertex[] m_FromTo = new Vertex[2];
-       // private int m_BitFlag = 0;
 
         private class Location
         {
