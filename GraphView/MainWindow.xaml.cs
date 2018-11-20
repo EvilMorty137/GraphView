@@ -832,39 +832,6 @@ namespace GraphView
 
         private double step = 0.5;
 
-        enum moveType{xp,xn,yp,yn};
-
-        private void Move(moveType type)
-        {
-            Vector3D v = new Vector3D(0, 0, 0);
-            switch (type)
-            {
-                case moveType.xp:
-                    v = new Vector3D(step, 0, 0);
-                    break;
-                case moveType.xn:
-                    v = new Vector3D(-1 * step, 0, 0);
-                    break;
-                case moveType.yp:
-                    v = new Vector3D(0, step, 0);
-                    break;
-                case moveType.yn:
-                    v = new Vector3D(0, -1 * step, 0);
-                    break;
-                default:
-                    break;
-            }
-            for (int i = 0; i < m_PointList.Count; i++)
-            {
-                //m_PointList[i] =m_PointList[i]+ v;
-                m_PointList[i] += v;
-            }
-            eyeshot.Entities.Clear();
-            CheckInterference();
-            //eyeshot.Entities.Add(new PointCloud(m_PointList, 5), m_LayerList[m_PointCloudLayer], Color.Red);
-            ShowPoints(m_PointList, Color.Red,true);
-        }
-
         private void ClearMesh_Click(object sender, RoutedEventArgs e)
         {
             eyeshot.Layers[m_LayerList[m_MeshLayer]].Visible = false;
