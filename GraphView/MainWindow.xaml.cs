@@ -587,7 +587,12 @@ namespace GraphView
 
         private void UnLock()
         {
-            eyeshot.Unlock("");
+            FileStream fs = new FileStream("../../key.lic",FileMode.Open);
+            StreamReader sr = new StreamReader(fs);
+            var key=sr.ReadLine();
+            eyeshot.Unlock(key);
+            sr.Close();
+            fs.Close();
         }
 
         private void InitViewport()
