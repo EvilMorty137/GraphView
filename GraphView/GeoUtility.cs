@@ -1113,6 +1113,39 @@ namespace GeoUtility
             return data;
         }
 
+        public virtual List<T> SelTraverse()
+        {
+            List<T> res = new List<T>();
+            var stack = new Stack<BiNode<T>>();
+            var cur = root;
+            var prev = root;
+            while (stack.Count>0||cur!=null)
+            {
+                if (cur !=null )
+                {
+                    stack.Push(cur);
+                    cur = cur.left;
+                }
+                else
+                {
+                    cur = stack.Pop();
+                    T max = prev.value;
+                    foreach (var item in stack)
+                    {
+                        if(item.value.CompareTo(max)>=0 )
+                            max = item.value;
+                    }
+                    if(cur.value.CompareTo(max)>=0)
+                        res.Add(cur.value);
+                    if (cur.right != null)
+                        prev = cur;
+                    cur = cur.right;
+                }
+            }
+
+            return res;
+        }
+
     }
 
     class BTree<T> : BiTreeBase<T>

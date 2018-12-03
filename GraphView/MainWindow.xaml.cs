@@ -213,20 +213,24 @@ namespace GraphView
         private void TestDS()
         {
             BTree<int> btree = new BTree<int>();
-            btree.root = new BiNode<int>(1);
+            btree.root = new BiNode<int>(5);
 
-            btree.root.left = new BiNode<int>(2);
-            btree.root.right = new BiNode<int>(3);
+            btree.root.left = new BiNode<int>(3);
+            btree.root.right = new BiNode<int>(10);
 
-            btree.root.left.left = new BiNode<int>(4);
-            btree.root.left.right = new BiNode<int>(5);
+            btree.root.left.left = new BiNode<int>(20);
+            btree.root.left.right = new BiNode<int>(21);
 
-            btree.root.left.right.right = new BiNode<int>(6);
+            btree.root.right.left = new BiNode<int>(6);
+            btree.root.right.right = new BiNode<int>(15);
+            btree.root.right.right.left = new BiNode<int>(17);
+            btree.root.right.right.right = new BiNode<int>(12);
 
-            btree.PreTraverse().ForEach(a => Console.Write(a.ToString()+","));
-            btree.MidTraverse().ForEach(a => Console.Write(a.ToString() + ","));
-            btree.PostTraverse().ForEach(a => Console.Write(a.ToString() + ","));
-            btree.LevelTraverse().ForEach(a => Console.Write(a.ToString() + ","));
+            //btree.PreTraverse().ForEach(a => Console.Write(a.ToString()+","));
+            //btree.MidTraverse().ForEach(a => Console.Write(a.ToString() + ","));
+            //btree.PostTraverse().ForEach(a => Console.Write(a.ToString() + ","));
+            //btree.LevelTraverse().ForEach(a => Console.Write(a.ToString() + ","));
+            btree.SelTraverse().ForEach(a => Console.Write(a.ToString() + ","));
 
             Debugger.Break();
         }
@@ -443,9 +447,10 @@ namespace GraphView
 
         private void InitIO()
         {
+            string fileName = "d:/data/test1w.stl";
             Task task1=new Task((Action)delegate
             {
-                Mesh m = ImportModel("d:/test1w.stl");//cgal_boolean test  
+                Mesh m = ImportModel(fileName);//cgal_boolean test  
                 //m = Mesh.CreateSphere(25, 8, 16);  
                 //_cmesh = new CMesh(m);
                 //RPDTree rpd = _cmesh.GetComponent("RPD") as RPDTree;
@@ -458,7 +463,7 @@ namespace GraphView
 
             task1.Start();
 
-            Mesh ms = ImportModel("d:/test1w1.stl");
+            Mesh ms = ImportModel(fileName);
             eyeshot.Entities.Add(ms, 0, Color.FromArgb(255, Color.MediumPurple));
 
             task1.Wait();
@@ -556,11 +561,11 @@ namespace GraphView
             // TestSurf();
             // TestCoplanar();
 #if DEBUG
-
+            TestDS();
             //TestIO();
             //TestSlice();
              //TestHE();
-             TestMC();
+             //TestMC();
             //TestDSAlgo();
 #else
             CheckInterference();
