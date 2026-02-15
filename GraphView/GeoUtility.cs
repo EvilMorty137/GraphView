@@ -377,7 +377,7 @@ namespace GeoUtility
             {
                 f.V1 = m_old_new_vid[f.V1];
                 f.V2 = m_old_new_vid[f.V2];
-                f.V2 = m_old_new_vid[f.V2];
+                f.V3 = m_old_new_vid[f.V3];
             }
             
             fList.Add(f);
@@ -735,7 +735,7 @@ namespace GeoUtility
         public override void AddFace(IndexTriangle t)
         {
             Face f = new Face(t);
-            f.V1 = m_old_new_vid[f.V1];f.V2 = m_old_new_vid[f.V2];f.V2 = m_old_new_vid[f.V2];
+            f.V1 = m_old_new_vid[f.V1];f.V2 = m_old_new_vid[f.V2];f.V3 = m_old_new_vid[f.V3];
             fList.Add(f);
             int fId = fList.Count - 1;
             
@@ -2079,6 +2079,5 @@ namespace GeoUtility
     
 
 }
-
 
 
